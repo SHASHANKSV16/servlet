@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Passport Seva</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <form  action="passport" method="post" class="border rounded-3 p-4 shadow-sm bg-white">
+       
+
+      
+        <div class="row mb-3 align-items-start">
+          <label class="col-md-3 col-form-label">Register to apply at</label>
+          <div class="col-md-4">
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="radio" name="registerAt" id="cpvDelhi"  value="cpvDelhi" checked>
+              <label class="form-check-label" for="cpvDelhi">CPV Delhi</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="registerAt" id="passportOfficeOption" value="Passport Office">
+              <label class="form-check-label" for="passportOfficeOption">Passport Office</label>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <p class="form-note">
+              Select the'CPV Delhi'option to apply for Diplomatic/Official passport at Consular, Passport and Visa (CPV) division, Delhi.
+            </p>
+          </div>
+        </div>
+
+      
+        <div class="row mb-3 align-items-center">
+          <label for="passportOffice" class="col-md-3 col-form-label">Passport Office </label>
+          <div class="col-md-4">
+            <select id="passportOffice" class="form-select"  name="office">
+              <option>----- Select -----</option>
+              <option value="Ahmedabad">Ahmedabad</option>
+              <option value="Bengaluru">Bengaluru</option>
+              <option value="Chennai">Chennai</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Hyderabad">Hyderabad</option>
+              
+            </select>
+          </div>
+          <div class="col-md-5">
+            <p class="form-note">
+              Tibetan Refugees applying for Identity Certificate must register with 'Delhi' Passport Office.
+            </p>
+          </div>
+        </div>
+
+      
+        <div class="row mb-3 align-items-center">
+          <label for="givenName" class="col-md-3 col-form-label" >Given Name (Max 45 Characters)</label>
+          <div class="col-md-4">
+            <input type="text" id="givenName" class="form-control" placeholder="First Name + Middle Name" name="name" required>
+          </div>
+          <div class="col-md-5">
+            <p class="form-note">Initials and honorifics (e.g. Dr., Col., etc.) are not allowed.</p>
+          </div>
+        </div>
+
+        
+        <div class="row mb-3 align-items-center">
+          <label for="surname" class="col-md-3 col-form-label">Surname (Max 45 Characters)</label>
+          <div class="col-md-4">
+            <input type="text" id="surname" class="form-control" name="surname">
+          </div>
+         
+        </div>
+
+      
+        <div class="row mb-3 align-items-center">
+          <label for="dob" class="col-md-3 col-form-label">Date of Birth (DD/MM/YYYY)</label>
+          <div class="col-md-4">
+            <input type="text" id="dob" class="form-control" placeholder="DD/MM/YYYY" name="dob" required>
+          </div>
+          
+        </div>
+
+       
+        <div class="row mb-3 align-items-center">
+          <label for="email" class="col-md-3 col-form-label">E-mail Id (Max 35 Characters)</label>
+          <div class="col-md-4">
+            <input type="email" id="email" class="form-control" name="email" placeholder="name@example.com" required>
+          </div>
+         
+        </div>
+
+     
+        <div class="row mb-3 align-items-center">
+          <label class="col-md-3 col-form-label">Login Id same as E-mail?</label>
+          <div class="col-md-4">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="loginSame" id="loginYes" value="yes" checked>
+              <label class="form-check-label" for="loginYes">Yes</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="loginSame" id="loginNo" value="no">
+              <label class="form-check-label" for="loginNo">No</label>
+            </div>
+          </div>
+
+ <div class="row mb-3 align-items-center">
+          <label for="loginId" class="col-md-3 col-form-label">Login Id</label>
+          <div class="col-md-4">
+            <div class="input-group">
+              <input type="text" id="loginId" class="form-control" name="loginId" required>
+             
+            </div>
+          </div>
+          
+        </div>
+
+        
+        <div class="row mb-3 align-items-center">
+          <label for="password" class="col-md-3 col-form-label">Password</label>
+          <div class="col-md-4">
+            <input type="password" id="password" class="form-control" name="pwd" required>
+          </div>
+          
+        </div>
+        <div class="row mb-3 align-items-center">
+          <label for="confirmPassword" class="col-md-3 col-form-label">Confirm Password</label>
+          <div class="col-md-4">
+            <input type="password" id="confirmPassword" name="cpwd" class="form-control" required>
+          </div>
+          
+           <div class="row mb-3 align-items-center">
+          <label for="hintQuestion" class="col-md-3 col-form-label">Hint Question</label>
+          <div class="col-md-4">
+            <select id="hintQuestion" class="form-select"name="hintQuestion" required>
+              <option >----- Select -----</option>
+              <option value="Birth City">Birth City</option>
+              <option value="Favourite Colour">Favourite Colour</option>
+              <option value="Favourite Cricketer">Favourite Cricketer</option>
+              <option value="Favourite Food">Favourite Food</option>
+              
+            </select>
+          </div>
+         
+        </div>
+
+      =
+        <div class="row mb-3 align-items-center">
+          <label for="hintAnswer" class="col-md-3 col-form-label" >Hint Answer</label>
+          <div class="col-md-4">
+            <input type="text" id="hintAnswer" name="hintAnswer" class="form-control" required>
+          </div>
+       
+        </div>
+
+        </div>
+ <div class="row mt-4">
+          <div class="col-md-3"></div>
+          <div class="col-md-4">
+            <button type="submit" class="btn btn-primary w-100">Register</button>
+          </div>
+        </div>
+
+         </div>
+         </form>
+        </div>
+        </div>
+        </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
