@@ -39,7 +39,9 @@
 <div class="card-container">
     <div class="card shadow-lg p-4" style="width: 28rem; background: rgba(255,255,255,0.95);">
 
-        <h4 class="text-center mb-3 text-success">Booking Confirmed </h4>
+        <h4 class="text-center mb-3 text-success"style="color:green">${success} </h4>
+        <h4 class="text-center mb-3 text-success"style="color:red">${dataError} </h4>
+        <h4 class="text-center mb-3 text-success" style="color:red">${emailError} </h4>
 
         <table class="table table-bordered">
             <tr>

@@ -2,6 +2,7 @@ package com.xworkz.wonderla.servlets;
 
 import com.xworkz.wonderla.dto.WonderlaDTO;
 import com.xworkz.wonderla.exception.DataInvalidException;
+import com.xworkz.wonderla.exception.DataNotSavedException;
 import com.xworkz.wonderla.service.WonderlaService;
 import com.xworkz.wonderla.service.WonderlaServiceImpl;
 
@@ -39,13 +40,26 @@ public class WonderlaServlet extends HttpServlet {
             req.setAttribute("children", children);
             req.setAttribute("name", name);
             req.setAttribute("email", email);
+            req.setAttribute("success","Booking Confirmed");
 
             RequestDispatcher dispatcher = req.getRequestDispatcher("result.jsp");
             dispatcher.forward(req, resp);
+
         } catch (DataInvalidException e) {
-            System.out.println("data invalid");
-            e.printStackTrace();
+
+            req.setAttribute("dataError", "Data is Invalid");
+
+            RequestDispatcher dispatcher = req.getRequestDispatcher("result.jsp");
+            dispatcher.forward(req, resp);
+
+        } catch (DataNotSavedException e) {
+
+            req.setAttribute("emailError", "for the selected date the ticket has been booked by same email id. Please try again.");
+
+            RequestDispatcher dispatcher = req.getRequestDispatcher("result.jsp");
+            dispatcher.forward(req, resp);
         }
+
 
     }
 }

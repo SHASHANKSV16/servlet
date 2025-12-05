@@ -237,8 +237,6 @@
             !validateEmail()
         ) {
             e.preventDefault();
-        } else {
-            alert("Booking Successful!");
         }
     });
 
