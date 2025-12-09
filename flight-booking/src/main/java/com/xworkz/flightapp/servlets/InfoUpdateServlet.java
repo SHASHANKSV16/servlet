@@ -1,9 +1,9 @@
-package com.xworkz.wonderla.servlets;
+package com.xworkz.flightapp.servlets;
 
-import com.xworkz.wonderla.dto.SearchDto;
-import com.xworkz.wonderla.dto.WonderlaDTO;
-import com.xworkz.wonderla.service.WonderlaService;
-import com.xworkz.wonderla.service.WonderlaServiceImpl;
+import com.xworkz.flightapp.dto.BookingInfoDTO;
+import com.xworkz.flightapp.dto.SearchDto;
+import com.xworkz.flightapp.service.BookingService;
+import com.xworkz.flightapp.service.BookingServiceImpl;
 import lombok.SneakyThrows;
 
 import javax.servlet.ServletException;
@@ -15,17 +15,16 @@ import java.io.IOException;
 import java.util.Optional;
 
 @WebServlet(urlPatterns = "/edit", loadOnStartup = 1)
-public class BookingDetailsEditServlet extends HttpServlet {
-    WonderlaService wonderlaService = new WonderlaServiceImpl();
-
+public class InfoUpdateServlet extends HttpServlet {
+    BookingService service = new BookingServiceImpl();
     @SneakyThrows
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
         String date = req.getParameter("date");
         SearchDto searchDto = new SearchDto(date, email);
-        Optional<WonderlaDTO> wonderlaDTO = wonderlaService.validateAndSearch(searchDto);
-        req.setAttribute("edit", wonderlaDTO.get());
+        Optional<BookingInfoDTO> dto = service.validateAndSearch(searchDto);
+        req.setAttribute("edit", dto.get());
         req.getRequestDispatcher("update.jsp").forward(req, resp);
     }
 }

@@ -1,4 +1,4 @@
-package com.xworkz.wonderla.constants;
+package com.xworkz.flightapp.constants;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

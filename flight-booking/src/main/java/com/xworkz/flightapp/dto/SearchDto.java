@@ -1,4 +1,4 @@
-package com.xworkz.wonderla.dto;
+package com.xworkz.flightapp.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

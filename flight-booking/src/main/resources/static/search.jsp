@@ -4,53 +4,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Wonderla</title>
+    <title>Flight Booking</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
         body {
             margin: 0;
-            padding: 0;
             min-height: 100vh;
-            background-image: url("https://www.explorebees.com/uploads/wonderla%20bangalore%20(3).jpg");
+            background-image: url("https://img.freepik.com/free-photo/airplane_74190-463.jpg?semt=ais_se_enriched&w=740&q=80");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .custom-navbar {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(8px);
+        }
+
+        .custom-navbar .nav-link,
+        .custom-navbar .navbar-brand {
+            color: black !important;
+            font-weight: 600;
+        }
+
+        .custom-navbar .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        .navbar-toggler {
+            border-color: black;
+        }
+
+        .navbar-toggler-icon {
+            filter: invert(1);
+        }
+
+        .hero-card {
+            height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .card-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 90vh;
-        }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+}
 
-        .valid-input {
-            border: 2px solid green !important;
-        }
+.error-text {
+    color: red;
+    font-size: 14px;
+}
 
-        .invalid-input {
-            border: 2px solid red !important;
-        }
+.valid-input {
+    border: 2px solid green !important;
+}
 
-        .error-text {
-            color: red;
-            font-size: 14px;
-        }
+.invalid-input {
+    border: 2px solid red !important;
+}
+
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg custom-navbar">
     <div class="container-fluid">
-        <img src="https://upload.wikimedia.org/wikipedia/kn/1/14/Wonderla_Amusements_Parks_Logo.png" height="45px">
+        <a class="navbar-brand" href="index.jsp">
+            <img src="https://www.freeiconspng.com/thumbs/airplane-icon-png/airplane-icon-png-png-22.png" height="50px">
+            S V AIRLINES
+        </a>
 
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="index.jsp">Home</a></li>
-            </ul>
-        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
     </div>
 </nav>
 
@@ -61,7 +95,7 @@
 
 
 
-        <form id="ticketForm" class="mt-3" method="get" action="wonder">
+        <form id="flight" class="mt-3" method="get" action="flight" >
 
             <div class="mb-2">
                 <label>Date</label>
@@ -77,21 +111,22 @@
             <div>
 
                 <c:if test="${dto !=null}">
-                <h4 class="text-center mb-3 text-success">Date: ${dto.date} </h4>
-                <h4 class="text-center mb-3 text-success">Ticket Type: ${dto.ticketType} </h4>
-                <h4 class="text-center mb-3 text-success">No of Adults: ${dto.adults} </h4>
-                <h4 class="text-center mb-3 text-success">No of Children: ${dto.children} </h4>
-                <h4 class="text-center mb-3 text-success">Name: ${dto.name} </h4>
-                <h4 class="text-center mb-3 text-success">Email: ${dto.email} </h4>
-                <div class="col-md-6">
+                    <h4 class="text-center mb-3 text-success">From: ${dto.from} </h4>
+                    <h4 class="text-center mb-3 text-success">Destination: ${dto.destination} </h4>
+                    <h4 class="text-center mb-3 text-success">Date: ${dto.date} </h4>
+                    <h4 class="text-center mb-3 text-success">Airlines: ${dto.airline} </h4>
+                    <h4 class="text-center mb-3 text-success">Name: ${dto.name} </h4>
+                    <h4 class="text-center mb-3 text-success">Email: ${dto.email} </h4>
+                    <div>
                     <a href="edit?date=${dto.date}&email=${dto.email}"
                        class="btn btn-warning w-100">
                         Edit
                     </a>
-                </div>
+                    </div>
+
                 </c:if>
                 <h4 class="text-center mb-3 text-danger">${msg} </h4>
-                </div>
+            </div>
 
 
             <button type="submit" class="btn btn-primary w-100 mt-2">Search</button>
