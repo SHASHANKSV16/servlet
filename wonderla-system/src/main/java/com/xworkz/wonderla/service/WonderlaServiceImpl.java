@@ -2,9 +2,12 @@ package com.xworkz.wonderla.service;
 
 
 import com.xworkz.wonderla.dao.WonderlaDAO;
+import com.xworkz.wonderla.dto.SearchDto;
 import com.xworkz.wonderla.dto.WonderlaDTO;
 import com.xworkz.wonderla.exception.DataInvalidException;
 import com.xworkz.wonderla.exception.DataNotSavedException;
+
+import java.util.Optional;
 
 public class WonderlaServiceImpl implements WonderlaService {
 
@@ -55,5 +58,24 @@ public class WonderlaServiceImpl implements WonderlaService {
         }
 
 
+    }
+
+    @Override
+    public Optional<WonderlaDTO> validateAndSearch(SearchDto searchDto) throws DataInvalidException {
+        Boolean isInvalid = false;
+
+        if (searchDto.getDate() == null
+                || !searchDto.getDate().matches("\\d{2}-\\d{2}-\\d{4}") || searchDto.getDate().equals("null"))
+            isInvalid = true;
+        else if (searchDto.getEmail() == null
+                || !(searchDto.getEmail().endsWith("@gmail.com")
+                || searchDto.getEmail().endsWith("@outlook.com")
+                || searchDto.getEmail().endsWith(".in")))
+            isInvalid = true;
+        if (isInvalid) {
+            throw new DataInvalidException("Search data  is Invalid");
+        }else{
+          return  wonderlaDAO.getByEmailAndDate(searchDto);
+        }
     }
 }

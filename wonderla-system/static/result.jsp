@@ -29,9 +29,11 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link active" href="index.jsp">Home</a></li>
-                <li class="nav-item"><a class="nav-link active" href="#">Park</a></li>
-                <li class="nav-item"><a class="nav-link active" href="#">Resorts</a></li>
-                <li class="nav-item"><a class="nav-link active" href="#">Offers</a></li>
+                <li class="nav-item">
+        <span class="nav-link text-white fw-bold">
+            Hi ${sessionName}
+        </span>
+
             </ul>
         </div>
     </div>
@@ -39,9 +41,8 @@
 <div class="card-container">
     <div class="card shadow-lg p-4" style="width: 28rem; background: rgba(255,255,255,0.95);">
 
-        <h4 class="text-center mb-3 text-success"style="color:green">${success} </h4>
-        <h4 class="text-center mb-3 text-success"style="color:red">${dataError} </h4>
-        <h4 class="text-center mb-3 text-success" style="color:red">${emailError} </h4>
+        <h4 class="text-center mb-3 text-success" style="color:green;">${success} </h4>
+
 
         <table class="table table-bordered">
             <tr>
@@ -78,7 +79,6 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
 
 
 </body>

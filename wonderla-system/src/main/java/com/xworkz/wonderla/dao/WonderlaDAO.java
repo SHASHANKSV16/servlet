@@ -1,6 +1,7 @@
 package com.xworkz.wonderla.dao;
 
 import com.xworkz.wonderla.constants.DBConstants;
+import com.xworkz.wonderla.dto.SearchDto;
 import com.xworkz.wonderla.dto.WonderlaDTO;
 import lombok.SneakyThrows;
 
@@ -8,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Optional;
 
 
 public class WonderlaDAO {
@@ -54,5 +56,30 @@ public class WonderlaDAO {
 
 
         return isPresent;
+    }
+    @SneakyThrows
+    public Optional<WonderlaDTO> getByEmailAndDate(SearchDto searchDto){
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        String searchQuery = "Select * From wonderla where date =? AND email =?";
+
+        try(Connection connection = DriverManager.getConnection(DBConstants.URL.getProperties(),DBConstants.USERNAME.getProperties(), DBConstants.PWD.getProperties());
+         PreparedStatement preparedStatement = connection.prepareStatement(searchQuery)){
+            preparedStatement.setString(1,searchDto.getDate());
+            preparedStatement.setString(2,searchDto.getEmail());
+            ResultSet resultSet =preparedStatement.executeQuery();
+            while(resultSet.next()){
+                int id = resultSet.getInt(1);
+                String date = resultSet.getString(2);
+                String ticket_type = resultSet.getString(3);
+                int adult = resultSet.getInt(4);
+                int   children = resultSet.getInt(5);
+                String name = resultSet.getString(6);
+                String email = resultSet.getString(7);
+                WonderlaDTO wonderlaDTO = new WonderlaDTO(date,ticket_type,adult,children,name,email);
+                return Optional.of(wonderlaDTO);
+            }
+
+        }
+        return Optional.empty();
     }
 }

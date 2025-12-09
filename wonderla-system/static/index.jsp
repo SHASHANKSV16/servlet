@@ -43,16 +43,9 @@
                     <a class="nav-link active" href="index.jsp">Home</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link active" href="">Park</a>
-                </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" href="">Resorts</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link active" href="">Offers</a>
+                    <a class="nav-link active" href="search.jsp">Search</a>
                 </li>
             </ul>
         </div>

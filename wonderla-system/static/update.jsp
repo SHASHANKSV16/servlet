@@ -82,11 +82,11 @@
             </tbody>
         </table>
 
-        <form id="ticketForm" class="mt-3" method="post" action="wonder">
+        <form id="edit" class="mt-3" method="post" action="wonder">
 
             <div class="mb-2">
                 <label>Date</label>
-                <input type="text" class="form-control" id="date" name="date" placeholder="DD-MM-YYYY">
+                <input type="text" class="form-control" id="date" value="${edit.date}" disabled name="date" placeholder="DD-MM-YYYY">
                 <small id="dateError" class="error-text"></small>
             </div>
 
@@ -102,34 +102,34 @@
 
             <div class="mb-2">
                 <label>No of Adults</label>
-                <input type="number" class="form-control" id="adults" name="adults">
+                <input type="number" class="form-control" id="adults" name="adults" value="${edit.adults}">
                 <small id="adultsError" class="error-text"></small>
             </div>
 
             <div class="mb-2">
                 <label>No of Children</label>
-                <input type="number" class="form-control" id="children" name="children">
+                <input type="number" class="form-control" id="children" name="children" value="${edit.children}">
                 <small id="childrenError" class="error-text"></small>
             </div>
 
             <div class="mb-2">
                 <label>Name</label>
-                <input type="text" class="form-control" id="name" name="name">
+                <input type="text" class="form-control" id="name" name="name" value=" ${edit.name}">
                 <small id="nameError" class="error-text"></small>
             </div>
 
             <div class="mb-3">
                 <label>Email</label>
-                <input type="email" class="form-control" id="email" name="email">
+                <input type="email" class="form-control" id="email" name="email" value="${edit.email}" disabled>
                 <small id="emailError" class="error-text"></small>
             </div>
             <div>
                 <h4 class="text-center mb-3 text-danger"style="color:red";>${dataError} </h4>
                 <h4 class="text-center mb-3 text-danger" style="color:red;">${emailError} </h4>
-        </div>
+            </div>
 
 
-            <button type="submit" class="btn btn-primary w-100 mt-2">Book Now</button>
+            <button type="submit" class="btn btn-primary w-100 mt-2">Update Booking Details</button>
 
         </form>
 
