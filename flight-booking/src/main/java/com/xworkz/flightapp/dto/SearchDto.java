@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class SearchDto {
     private String date;
     private String email;
+    private String destination;
 }

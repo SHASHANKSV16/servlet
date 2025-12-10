@@ -83,6 +83,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="search.jsp">Search</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="destinationSearch.jsp">Destination Search</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -99,7 +102,7 @@
 
                 <div class="mb-3">
                     <label class="form-label">From</label>
-                    <input type="text" class="form-control" id="from" name="from" value="${edit.from}">
+                    <input type="text" class="form-control" id="from" name="from" value="${edit.from}" >
                     <small id="fromError" class="text-danger"></small>
                 </div>
 

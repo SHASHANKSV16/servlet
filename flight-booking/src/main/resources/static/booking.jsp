@@ -83,6 +83,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="search.jsp">Search</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="destinationSearch.jsp">Destination Search</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -99,30 +102,30 @@
 
                 <div class="mb-3">
                     <label class="form-label">From</label>
-                    <input type="text" class="form-control" id="from" name="from">
+                    <input type="text" class="form-control" id="from" value="${dto.from}" name="from">
                     <small id="fromError" class="text-danger"></small>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Destination</label>
-                    <input type="text" class="form-control" id="destination" name="destination">
+                    <input type="text" class="form-control" value="${dto.destination}"id="destination" name="destination">
                     <small id="destinationError" class="text-danger"></small>
                 </div>
                 <div class="mb-3">
                     <label>Date</label>
-                    <input type="text" class="form-control" id="date" name="date" placeholder="DD-MM-YYYY">
+                    <input type="text" class="form-control" id="date" value="${dto.date}"name="date" placeholder="DD-MM-YYYY">
                     <small id="dateError" class="error-text"></small>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" name="name">
+                    <input type="text" class="form-control" id="name" value="${dto.name}"name="name">
                     <small id="nameError" class="text-danger"></small>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email">
+                    <input type="email" class="form-control" id="email" value="${dto.email}" name="email">
                     <small id="emailError" class="text-danger"></small>
                 </div>
 

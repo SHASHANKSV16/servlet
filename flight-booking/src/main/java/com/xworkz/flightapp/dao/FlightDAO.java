@@ -1,5 +1,6 @@
 package com.xworkz.flightapp.dao;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import com.xworkz.flightapp.constants.DBConstants;
 import com.xworkz.flightapp.dto.BookingInfoDTO;
 import com.xworkz.flightapp.dto.SearchDto;
@@ -9,6 +10,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 public class FlightDAO {
@@ -77,6 +81,29 @@ public class FlightDAO {
 
         }
         return Optional.empty();
+    }
+    @SneakyThrows
+    public List<BookingInfoDTO> getByDestination(SearchDto searchDto){
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        String searchQuery = "Select * From flight where destination = ?";
+
+        try(Connection connection = DriverManager.getConnection(DBConstants.URL.getProperties(),DBConstants.USERNAME.getProperties(), DBConstants.PWD.getProperties());
+            PreparedStatement preparedStatement = connection.prepareStatement(searchQuery)){
+            preparedStatement.setString(1,searchDto.getDestination());
+            ResultSet resultSet =preparedStatement.executeQuery();
+            List<BookingInfoDTO> bookingInfoDTOS = new ArrayList<>();
+            while(resultSet.next()){
+                String from = resultSet.getString(2);
+                String destination = resultSet.getString(3);
+                String date = resultSet.getString(4);
+                String airline = resultSet.getString(5);
+                String name = resultSet.getString(6);
+                String email = resultSet.getString(7);
+                BookingInfoDTO bookingInfoDTO = new BookingInfoDTO(from,destination,date,name,email,airline);
+                bookingInfoDTOS.add(bookingInfoDTO);
+            }return bookingInfoDTOS;
+        }
+
     }
     }
 

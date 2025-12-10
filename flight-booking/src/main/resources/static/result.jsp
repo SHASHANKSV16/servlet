@@ -83,6 +83,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="search.jsp">Search</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="destinationSearch.jsp">Destination Search</a>
+                </li>
             </ul>
         </div>
     </div>

@@ -1,4 +1,4 @@
-package com.xworkz.flightapp;
+package com.xworkz.flightapp.servlets;
 
 import com.xworkz.flightapp.dto.BookingInfoDTO;
 import com.xworkz.flightapp.dto.SearchDto;
@@ -13,7 +13,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Optional;
 
@@ -52,9 +51,14 @@ public class BookingServlet extends HttpServlet {
             dispatcher.forward(req, resp);
 
 
+
+
+
+
         } catch (DataInvalidException e) {
 
             req.setAttribute("dataError", "Data is Invalid");
+            req.setAttribute("dto",bookingInfoDTO);
 
             RequestDispatcher dispatcher = req.getRequestDispatcher("booking.jsp");
             dispatcher.forward(req, resp);
@@ -62,9 +66,10 @@ public class BookingServlet extends HttpServlet {
         } catch (DataNotSavedException e) {
 
             req.setAttribute("emailError", "for the selected date the ticket has been booked by same email id. Please try again.");
-
+            req.setAttribute("dto",bookingInfoDTO);
             RequestDispatcher dispatcher = req.getRequestDispatcher("booking.jsp");
             dispatcher.forward(req, resp);
+
         }
 
 
@@ -74,7 +79,9 @@ public class BookingServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String date = req.getParameter("date");
         String email = req.getParameter("email");
-        SearchDto dto = new SearchDto(date,email);
+        SearchDto dto = new SearchDto();
+        dto.setEmail(email);
+        dto.setDate(date);
         try {
             Optional<BookingInfoDTO> optional = service.validateAndSearch(dto);
             if (optional.isPresent()) {

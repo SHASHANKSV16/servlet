@@ -22,7 +22,9 @@ public class InfoUpdateServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
         String date = req.getParameter("date");
-        SearchDto searchDto = new SearchDto(date, email);
+        SearchDto searchDto = new SearchDto();
+        searchDto.setDate(date);
+        searchDto.setEmail(email);
         Optional<BookingInfoDTO> dto = service.validateAndSearch(searchDto);
         req.setAttribute("edit", dto.get());
         req.getRequestDispatcher("update.jsp").forward(req, resp);

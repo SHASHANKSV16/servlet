@@ -6,6 +6,8 @@ import com.xworkz.flightapp.dto.SearchDto;
 import com.xworkz.flightapp.exception.DataInvalidException;
 import com.xworkz.flightapp.exception.DataNotSavedException;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 public class BookingServiceImpl implements BookingService {
@@ -58,7 +60,7 @@ public class BookingServiceImpl implements BookingService {
             if(!flightDAO.emailAndDateCheck(bookingInfoDTO)){
                 flightDAO.save(bookingInfoDTO);
             }else {
-                System.out.println("email aand date not matched");
+                System.out.println("email and date not matched");
                 throw new DataNotSavedException("data not saved exception");
 
 
@@ -81,6 +83,18 @@ public class BookingServiceImpl implements BookingService {
         }else{
             return  flightDAO.getByEmailAndDate(searchDto);
         }
+    }
+
+    @Override
+    public List<BookingInfoDTO> validateAndDestinationSearch(SearchDto searchDto) throws DataInvalidException {
+
+        if(searchDto.getDestination() == null
+                || searchDto.getDestination().trim().length() < 3){
+            throw new DataInvalidException("Search data  is Invalid");
+        }else {
+            return flightDAO.getByDestination(searchDto);
+        }
+
     }
 
 }
