@@ -98,7 +98,7 @@
 
             <h4 class="text-center mb-4">Tickets Booking Update Form</h4>
 
-            <form action="flight" method="post" id="bookingForm">
+            <form action="update" method="post" id="bookingForm">
 
                 <div class="mb-3">
                     <label class="form-label">From</label>
@@ -113,7 +113,7 @@
                 </div>
                 <div class="mb-3">
                     <label>Date</label>
-                    <input type="text" class="form-control" id="date" name="date" disabled placeholder="DD-MM-YYYY" value="${edit.date}">
+                    <input type="text" class="form-control" id="date" name="date" readonly="readonly" placeholder="DD-MM-YYYY" value="${edit.date}">
                     <small id="dateError" class="error-text"></small>
                 </div>
 
@@ -125,7 +125,7 @@
 
                 <div class="mb-3">
                     <label class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" value="${edit.email}" disabled>
+                    <input type="email" class="form-control" id="email" name="email" value="${edit.email}" readonly="readonly">
                     <small id="emailError" class="text-danger"></small>
                 </div>
 
@@ -141,7 +141,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary w-100" id="submitBtn">
-                    Submit
+                    Update
                 </button>
 
 

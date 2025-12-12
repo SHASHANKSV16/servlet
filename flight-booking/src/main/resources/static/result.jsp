@@ -129,7 +129,6 @@
             </tbody>
         </table>
 
-        <a href="index.jsp" class="btn btn-primary w-100 mt-3">Book Another Ticket</a>
 
     </div>
 </div>

@@ -149,7 +149,7 @@
                                     <td>${d.name}</td>
                                     <td>${d.email}</td>
                                     <td>
-                                        <a href="edit?date=${d.date}&email=${d.email}&destination=${d.destination}&airline=${d.airline}&from=${d.from}"
+                                        <a href="edit?date=${d.date}&email=${d.email}"
                                            class="btn btn-warning btn-sm">
                                             Edit
                                         </a>

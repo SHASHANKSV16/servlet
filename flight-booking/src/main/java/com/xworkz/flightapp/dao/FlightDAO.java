@@ -105,5 +105,25 @@ public class FlightDAO {
         }
 
     }
+    @SneakyThrows
+    public  void update(BookingInfoDTO bookingInfoDTO){
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        String insertQuery = "UPDATE flight SET `from` =? , destination =? , airline =? , name=? WHERE `date` = ? AND email=?" ;
+
+        try (Connection connection = DriverManager.getConnection(DBConstants.URL.getProperties(), DBConstants.USERNAME.getProperties(), DBConstants.PWD.getProperties());
+             PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
+
+            preparedStatement.setString(1, bookingInfoDTO.getFrom());
+            preparedStatement.setString(2, bookingInfoDTO.getDestination());
+            preparedStatement.setString(5, bookingInfoDTO.getDate());
+            preparedStatement.setString(3, bookingInfoDTO.getAirline());
+            preparedStatement.setString(4, bookingInfoDTO.getName());
+            preparedStatement.setString(6, bookingInfoDTO.getEmail());
+            preparedStatement.executeUpdate();
+            System.out.println(bookingInfoDTO);
+
+        }
+
+    }
     }
 

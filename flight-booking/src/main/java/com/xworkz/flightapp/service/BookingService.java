@@ -12,4 +12,5 @@ public interface BookingService {
     void validateAndSave(BookingInfoDTO bookingInfoDTO) throws DataInvalidException, DataNotSavedException;
     public Optional<BookingInfoDTO> validateAndSearch(SearchDto searchDto) throws DataInvalidException;
     public List<BookingInfoDTO> validateAndDestinationSearch(SearchDto searchDto)throws DataInvalidException;
+    void validateAndUpdate(BookingInfoDTO bookingInfoDTO) throws DataInvalidException;
 }
